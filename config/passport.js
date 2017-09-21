@@ -24,8 +24,8 @@ const appEnv = cfenv.getAppEnv();
 const callbackURL = process.env.CF_APP_URL || (appEnv.isLocal ? 'http://localhost:3000' : appEnv.url);
 
 const strategyOptions = {
-  consumerKey: process.env.TWITTER_CONSUMER_KEY,
-  consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
+  consumerKey: process.env.TWITTER_CONSUMER_KEY || 'none',
+  consumerSecret: process.env.TWITTER_CONSUMER_SECRET || 'none',
   callbackURL: `${callbackURL}/auth/twitter/callback`
 };
 
@@ -38,8 +38,8 @@ const strategy = new TwitterStrategy(strategyOptions, (token, tokenSecret, profi
 
   done(null, {
     credentials: {
-      consumer_key: process.env.TWITTER_CONSUMER_KEY,
-      consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+      consumer_key: process.env.TWITTER_CONSUMER_KEY || 'none',
+      consumer_secret: process.env.TWITTER_CONSUMER_SECRET || 'none',
       access_token_key: token,
       access_token_secret: tokenSecret
     },
