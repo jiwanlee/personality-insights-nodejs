@@ -6,4 +6,4 @@ applications:
   memory: 256M
   instances: 1
   services:
-  - pi-service-demo-korean
+  - my-pi-service
